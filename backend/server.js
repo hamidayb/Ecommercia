@@ -1,8 +1,11 @@
 const express = require("express")
+const dotenv = require("dotenv")
 const products = require("./data/products")
 
+// configuration of .env file and puts all those environment variables in process.env
+dotenv.config()
+
 const app = express()
-const port = 5000 // assign port what is in the PORT, if there's nothing in PORT then assign 5000 to port
 
 // API Requests
 app.get("/", (req, res) => {
@@ -20,4 +23,10 @@ app.get("/api/products/:id", (req, res) => {
 })
 
 // Listening
-app.listen(port, console.log(`Listening on port ${port}`))
+const port = process.env.PORT || 5000 // assign port what is in the PORT, if there's nothing in PORT then assign 5000 to port
+app.listen(
+  port,
+  console.log(
+    `Server running in ${process.env.NODE_ENV} mode & Listening  on port ${port}`
+  )
+)
