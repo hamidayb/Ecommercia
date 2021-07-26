@@ -2,6 +2,7 @@ import express from "express"
 import dotenv from "dotenv"
 import Connect_DB from "./config/db.js"
 import products from "./data/products.js"
+import colors from "colors"
 
 // configuration of .env file and puts all those environment variables in process.env
 dotenv.config()
@@ -31,5 +32,6 @@ app.listen(
   port,
   console.log(
     `Server running in ${process.env.NODE_ENV} mode & Listening  on port ${port}`
+      .yellow.bold
   )
 )

@@ -39,3 +39,15 @@
 ##### It is Object Data Modeling library for MongoDB and NodeJS. It is used to translate between objects in code and their representation in MongoDB. It allows us to create a model and schema for different resources in our database.
 
 > npm i mongoose
+
+### **Colors**
+
+##### It is used to style console text
+
+> npm i colors
+
+### **bcryptjs**
+
+##### It is used to encrypt and decrypt password using hash. **bcrypt.hashSync(string)** is used to create hash value of string _synchronously_. You can use bcrypt.hash(string) either which will generate hash value asynchronously.
+
+> npm i bcryptjs

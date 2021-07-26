@@ -7,9 +7,9 @@ const Connect_DB = async () => {
       useCreateIndex: true,
       useUnifiedTopology: true,
     })
-    console.log(`Successful Connection ${conn}`)
+    console.log(`Successful Connection ${conn}`.cyan.underline)
   } catch (error) {
-    console.error(`Unsuccessful Connection ${error}`)
+    console.error(`Unsuccessful Connection ${error}`.red.underline.bold)
   }
 }
 
