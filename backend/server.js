@@ -1,9 +1,12 @@
 import express from "express"
 import dotenv from "dotenv"
+import Connect_DB from "./config/db.js"
 import products from "./data/products.js"
 
 // configuration of .env file and puts all those environment variables in process.env
 dotenv.config()
+
+Connect_DB()
 
 const app = express()
 
