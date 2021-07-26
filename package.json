@@ -1,0 +1,28 @@
+{
+  "name": "ecommercia",
+  "version": "1.0.0",
+  "description": "MERN Shopping App",
+  "main": "server.js",
+  "scripts": {
+    "start": "node",
+    "server": "nodemon backend/server",
+    "client": "npm start --prefix frontend",
+    "dev":"concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hamidayb/Ecommercia.git"
+  },
+  "author": "Hamid Ayub",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hamidayb/Ecommercia/issues"
+  },
+  "homepage": "https://github.com/hamidayb/Ecommercia#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.0"
+  }
+}
