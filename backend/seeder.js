@@ -23,6 +23,7 @@ const importData = async () => {
     const sampleProducts = Products.map((product) => {
       return { ...product, user: adminUser }
     })
+    console.log(sampleProducts)
     await ProductModel.insertMany(sampleProducts)
 
     console.log("Data imported".green.inverse)

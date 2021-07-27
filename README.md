@@ -51,3 +51,9 @@
 ##### It is used to encrypt and decrypt password using hash. **bcrypt.hashSync(string)** is used to create hash value of string _synchronously_. You can use bcrypt.hash(string) either which will generate hash value asynchronously.
 
 > npm i bcryptjs
+
+### **express-async-handler**
+
+##### It is used to handle exceptions just as try-catch do.
+
+> npm i express-async-handler
