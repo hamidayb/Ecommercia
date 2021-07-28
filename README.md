@@ -57,3 +57,13 @@
 ##### It is used to handle exceptions just as try-catch do.
 
 > npm i express-async-handler
+
+### ** redux react-redux redux-thunk redux-devtools-extension **
+
+##### Redux is mostly used for application state management. It maintains state globally rather than component-level-state and are easy to test.
+
+##### Redux-thunk is middleware that lets you call action creaters that return a function instead of an action object.
+
+##### Redux-devtools-extension manages redux-devtools browser extension for testing and debugging
+
+> npm i redux react-redux redux-devtools-extension
