@@ -1,9 +1,8 @@
-import React, { useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { addToCart } from "../actions/cartActions"
+import { addToCart, removeFromCart } from "../actions/cartActions"
 import { Link } from "react-router-dom"
-import { Row, Col, ListGroup, Image, Form, Button } from "react-bootstrap"
-
+import { Row, Col, ListGroup, Image, Form, Button, Card } from "react-bootstrap"
 import Message from "../components/Message"
 
 const CartScreen = ({ match, location, history }) => {
@@ -15,14 +14,20 @@ const CartScreen = ({ match, location, history }) => {
   const selector = useSelector((state) => state.cart)
   const { cartItems } = selector
 
-  const removeFromCartHandler = (id) => {}
-
   useEffect(() => {
     if (productID) {
       dispatch(addToCart(productID, qty))
     } else {
     }
   }, [dispatch, productID, qty])
+
+  const removeFromCartHandler = (id) => {
+    dispatch(removeFromCart(id))
+  }
+
+  const checkoutHandler = () => {
+    history.push("/login?redirect=shipping")
+  }
 
   return (
     <div>
@@ -53,9 +58,11 @@ const CartScreen = ({ match, location, history }) => {
                     <Col>
                       <Form.Control
                         as="select"
-                        value={qty}
+                        value={item.qty}
                         onChange={(e) =>
-                          dispatch(addToCart(item.product, item.qty))
+                          dispatch(
+                            addToCart(item.product, Number(e.target.value))
+                          )
                         }
                       >
                         {[...Array(item.countInStock).keys()].map((x) => (
@@ -79,6 +86,32 @@ const CartScreen = ({ match, location, history }) => {
               ))}
             </ListGroup>
           )}
+        </Col>
+        <Col md={4}>
+          <Card>
+            <ListGroup variant="flush">
+              <ListGroup.Item>
+                <h2>
+                  Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}
+                  ) Items
+                </h2>
+                $
+                {cartItems
+                  .reduce((acc, item) => acc + item.qty * item.price, 0)
+                  .toFixed()}
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Button
+                  type="button"
+                  calssName="btn-block"
+                  disabled={cartItems.length === 0}
+                  onClick={checkoutHandler}
+                >
+                  Proceed To Checkout
+                </Button>
+              </ListGroup.Item>
+            </ListGroup>
+          </Card>
         </Col>
       </Row>
     </div>
