@@ -2,6 +2,7 @@ import express from "express"
 import dotenv from "dotenv"
 import Connect_DB from "./config/db.js"
 import productRoutes from "./routes/productRoutes.js"
+import userRoutes from "./routes/userRoutes.js"
 import { notFound, error } from "./middleware/errorMiddleware.js"
 import colors from "colors"
 
@@ -11,6 +12,7 @@ dotenv.config()
 Connect_DB()
 
 const app = express()
+app.use(express.json())
 
 // API Requests
 app.get("/", (req, res) => {
@@ -18,10 +20,11 @@ app.get("/", (req, res) => {
 })
 
 app.use("/api/products", productRoutes)
+app.use("/api/users", userRoutes)
 
 // Middleware
 
-// handle error if wrong url
+// handle error if wrong url``
 app.use(notFound)
 // change error status of 200 in case to 500
 app.use(error)
