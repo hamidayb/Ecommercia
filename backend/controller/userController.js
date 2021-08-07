@@ -90,10 +90,10 @@ export const updateUser = asyncHandler(async (req, res) => {
 
     const updatedUser = await user.save()
     res.json({
-      _id: updateUser._id,
-      name: updateUser.name,
+      _id: updatedUser._id,
+      name: updatedUser.name,
       email: updatedUser.email,
-      isAdmin: updateUser.isAdmin,
+      isAdmin: updatedUser.isAdmin,
       token: generateToken(user._id),
     })
   } else {
