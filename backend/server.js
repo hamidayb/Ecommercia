@@ -3,6 +3,7 @@ import dotenv from "dotenv"
 import Connect_DB from "./config/db.js"
 import productRoutes from "./routes/productRoutes.js"
 import userRoutes from "./routes/userRoutes.js"
+import orderRoutes from "./routes/orderRoutes.js"
 import { notFound, error } from "./middleware/errorMiddleware.js"
 import colors from "colors"
 
@@ -21,7 +22,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/products", productRoutes)
 app.use("/api/users", userRoutes)
-
+app.use("/api/orders", orderRoutes)
 // Middleware
 
 // handle error if wrong url``

@@ -1,10 +1,13 @@
+import { useEffect } from "react"
 import { Link } from "react-router-dom"
 import { ListGroup, Button, Row, Col, Image, Card } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
 import CheckoutSteps from "../components/CheckoutSteps"
 import Message from "../components/Message"
+import { placeOrder } from "../actions/orderActions"
 
 export const PlaceOrderScreen = ({ history }) => {
+  const dispatch = useDispatch()
   const cart = useSelector((state) => state.cart)
 
   const roundOff = (num) => {
@@ -16,13 +19,35 @@ export const PlaceOrderScreen = ({ history }) => {
     0
   )
 
+  const createdOrder = useSelector((state) => state.createdOrder)
+  const { orderInfo, success, error } = createdOrder
+
   cart.shippingPrice = Number(cart.itemsPrice >= 200 ? 0 : 100)
-
   cart.taxPrice = roundOff(Number(0.5 * cart.itemsPrice))
-
   cart.totalPrice = roundOff(
     Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.taxPrice)
   )
+
+  useEffect(() => {
+    if (success) {
+      history.push(`/order/${orderInfo._id}`)
+    }
+    // eslint-disable-next-line
+  }, [history, success])
+
+  const placeOrderHandler = (e) => {
+    dispatch(
+      placeOrder({
+        orderItems: cart.cartItems,
+        shippingAddress: cart.shippingAddress,
+        paymentMethod: cart.paymentMethod.paymentMethod,
+        itemsPrice: cart.itemsPrice,
+        shippingPrice: cart.shippingPrice,
+        taxPrice: cart.taxPrice,
+        totalPrice: cart.totalPrice,
+      })
+    )
+  }
 
   return (
     <>
@@ -108,6 +133,18 @@ export const PlaceOrderScreen = ({ history }) => {
                   <Col>Total: </Col>
                   <Col>${cart.totalPrice}</Col>
                 </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                {error && <Message variant="danger">{error}</Message>}
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Button
+                  type="button"
+                  style={{ width: "100%" }}
+                  onClick={placeOrderHandler}
+                >
+                  Place Order
+                </Button>
               </ListGroup.Item>
             </ListGroup>
           </Card>
