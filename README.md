@@ -67,3 +67,9 @@
 ##### Redux-devtools-extension manages redux-devtools browser extension for testing and debugging
 
 > npm i redux react-redux redux-devtools-extension
+
+### **react-paypal-button-v2**
+
+##### It is used to create prebuild paypal button
+
+> npm i react-paypal-button-v2
