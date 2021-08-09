@@ -78,7 +78,7 @@ export const PlaceOrderScreen = ({ history }) => {
               ) : (
                 <ListGroup variant="flush">
                   {cart.cartItems.map((item) => (
-                    <ListGroup.Item>
+                    <ListGroup.Item key={item._id}>
                       <Row>
                         <Col md={1}>
                           <Image src={item.image} fluid rounded></Image>

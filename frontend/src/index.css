@@ -5,6 +5,17 @@ main {
   height: 80vh;
 }
 
+a {
+  text-decoration: none !important;
+}
+a:hover {
+  text-decoration: underline !important;
+}
+
+p {
+  margin: 8px !important;
+}
+
 .product-heading {
   text-decoration: none;
   font-size: 18px;
