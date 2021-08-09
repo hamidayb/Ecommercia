@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux"
 import CheckoutSteps from "../components/CheckoutSteps"
 import Message from "../components/Message"
 import { placeOrder } from "../actions/orderActions"
+import Loader from "../components/Spinner"
 
 export const PlaceOrderScreen = ({ history }) => {
   const dispatch = useDispatch()
@@ -20,7 +21,7 @@ export const PlaceOrderScreen = ({ history }) => {
   )
 
   const createdOrder = useSelector((state) => state.createdOrder)
-  const { orderInfo, success, error } = createdOrder
+  const { loading, orderInfo, success, error } = createdOrder
 
   cart.shippingPrice = Number(cart.itemsPrice >= 200 ? 0 : 100)
   cart.taxPrice = roundOff(Number(0.5 * cart.itemsPrice))
@@ -135,6 +136,7 @@ export const PlaceOrderScreen = ({ history }) => {
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
+                {loading && <Loader />}
                 {error && <Message variant="danger">{error}</Message>}
               </ListGroup.Item>
               <ListGroup.Item>

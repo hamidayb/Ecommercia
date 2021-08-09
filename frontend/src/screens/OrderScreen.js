@@ -59,7 +59,6 @@ export const PlaceOrderScreen = ({ match }) => {
   }, [dispatch, orderId, order, successPay])
 
   const paymentSuccessHandler = (paymentResult) => {
-    console.log(paymentResult)
     dispatch(orderPayAction(orderId, paymentResult))
   }
 

@@ -8,6 +8,9 @@ import {
   ORDER_PAY_REQUEST,
   ORDER_PAY_SUCCESS,
   ORDER_PAY_FAIL,
+  GET_MY_ORDERS_REQUEST,
+  GET_MY_ORDERS_SUCCESS,
+  GET_MY_ORDERS_FAIL,
 } from "../constants/orderConstants"
 import axios from "axios"
 
@@ -27,7 +30,6 @@ export const placeOrder = (order) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.post("/api/orders", order, config)
-    console.log(data)
     dispatch({
       type: ORDER_PLACE_SUCCESS,
       payload: data,
@@ -90,7 +92,11 @@ export const orderPayAction =
         },
       }
 
-      const { data } = await axios.put(`/api/orders/${orderId}/pay`, config)
+      const { data } = await axios.put(
+        `/api/orders/${orderId}/pay`,
+        paymentResult,
+        config
+      )
 
       dispatch({
         type: ORDER_PAY_SUCCESS,
@@ -106,3 +112,34 @@ export const orderPayAction =
       })
     }
   }
+
+export const getMyOrders = () => async (dispatch, getState) => {
+  try {
+    dispatch({ type: GET_MY_ORDERS_REQUEST })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    const { data } = await axios.get(`/api/orders/myorders`, config)
+
+    dispatch({
+      type: GET_MY_ORDERS_SUCCESS,
+      payload: data,
+    })
+  } catch (error) {
+    dispatch({
+      type: GET_MY_ORDERS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}

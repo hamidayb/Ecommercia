@@ -30,7 +30,6 @@ export const addOrder = asyncHandler(async (req, res) => {
       totalPrice,
     })
     const createdOrder = await order.save()
-    console.log(createdOrder)
     res.status(201).json(createdOrder)
   }
 })
@@ -51,6 +50,9 @@ export const getOrderById = asyncHandler(async (req, res) => {
   }
 })
 
+// @desc        Update order to paid
+// @route       /api/orders/:id/pay
+// @access      private
 export const updateOrderToPaid = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id)
 
@@ -69,4 +71,12 @@ export const updateOrderToPaid = asyncHandler(async (req, res) => {
     res.status(404)
     throw new Error("Order not found")
   }
+})
+
+// @desc        Get orders of a user
+// @route       /api/orders/myorders
+// @access      private
+export const getMyOrders = asyncHandler(async (req, res) => {
+  const orders = await Order.find({ user: req.user._id })
+  res.json(orders)
 })
