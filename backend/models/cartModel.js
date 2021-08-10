@@ -1,5 +1,4 @@
 import mongoose from "mongoose"
-
 const cartSchema = mongoose.Schema(
   {
     user: {
@@ -10,9 +9,10 @@ const cartSchema = mongoose.Schema(
     cartItems: [
       {
         name: { type: String, required: true },
-        qty: { type: Number, required: true, default: 0 },
+        qty: { type: Number, required: true },
         image: { type: String, required: true },
         price: { type: Number, required: true },
+        countInStock: { type: Number, required: true },
         product: {
           type: mongoose.Schema.Types.ObjectId,
           required: true,
@@ -25,7 +25,5 @@ const cartSchema = mongoose.Schema(
     timestamps: true,
   }
 )
-
 const cartModel = mongoose.model("Cart", cartSchema)
-
 export default cartModel

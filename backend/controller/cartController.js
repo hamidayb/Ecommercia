@@ -5,24 +5,23 @@ import asyncHandler from "express-async-handler"
 // @route       /api/cart
 // @access      private
 export const addToCart = asyncHandler(async (req, res) => {
-  const { cartItem } = req.body
-  if (!cartItem) {
+  const { cartItems } = req.body
+  if (cartItems && cartItems.length === 0) {
     res.status(400)
-    throw new Error("Item not added in cart")
+    throw new Error("No item in the cart")
   } else {
     const cart = (await Cart.find({ user: req.user._id }))[0]
-    if (cart) {
-      const newCart = [...cart.cartItems, cartItem]
-      cart.cartItems = newCart
+    if (cart && cart.length !== 0) {
+      cart.cartItems = cartItems
       const updatedCart = await cart.save()
       res.status(201)
-      res.json({ updatedCart })
+      res.json(updatedCart)
     } else {
-      const cart = new Cart({
+      const newCart = new Cart({
         user: req.user._id,
-        cartItems: cartItem,
+        cartItems,
       })
-      const updatedCart = await cart.save()
+      const updatedCart = await newCart.save()
       res.status(201)
       res.json(updatedCart)
     }
