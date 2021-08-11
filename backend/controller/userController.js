@@ -76,6 +76,14 @@ export const getUserProfile = asyncHandler(async (req, res) => {
   }
 })
 
+// @desc    Get users profile
+// @route   GET /api/users
+// @access  private
+export const getUsers = asyncHandler(async (req, res) => {
+  const user = await User.find({})
+  res.json(user)
+})
+
 // @desc    Update a user
 // @route   PUT /api/users/profile
 // @access  private
