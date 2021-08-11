@@ -90,7 +90,7 @@ export const updateCart = () => async (dispatch, getState) => {
       ? JSON.parse(localStorage.getItem("cartItems"))
       : []
 
-    const { data } = await axios.post("/api/cart", { cartItems }, config)
+    await axios.post("/api/cart", { cartItems }, config)
 
     dispatch({ type: CART_UPDATE_SUCCESS })
   } catch (error) {
