@@ -1,6 +1,7 @@
 import {
   GET_MY_ORDERS_FAIL,
   GET_MY_ORDERS_REQUEST,
+  GET_MY_ORDERS_RESET,
   GET_MY_ORDERS_SUCCESS,
   ORDER_DETAILS_FAIL,
   ORDER_DETAILS_REQUEST,
@@ -71,6 +72,8 @@ export const getMyOrdersReducer = (state = {}, action) => {
       return { loading: false, orders: action.payload }
     case GET_MY_ORDERS_FAIL:
       return { loading: false, error: action.payload }
+    case GET_MY_ORDERS_RESET:
+      return {}
     default:
       return state
   }

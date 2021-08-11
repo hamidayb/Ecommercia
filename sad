@@ -1,0 +1,203 @@
+[33mcommit 98dc92febd56a7dd6e411b32c72d199181974837[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Tue Aug 10 11:04:21 2021 +0500
+
+    add and update cart backend added
+
+[33mcommit cd084f7f6fa2c63ac7d0bb57178846712ad1b401[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Mon Aug 9 18:04:46 2021 +0500
+
+    order section in profileScreen added
+
+[33mcommit e2ca7d171b5f2898521e2775aa849614f5666a16[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Mon Aug 9 17:53:51 2021 +0500
+
+    timestamps error resolved in models
+
+[33mcommit edd0a02c184ebb97403f7e16f3fed46a9ed2cdf6[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Mon Aug 9 16:01:30 2021 +0500
+
+    paypal button with payment added
+
+[33mcommit d4079d885abf5fd1ccad498810869960c84f79cd[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Mon Aug 9 12:50:23 2021 +0500
+
+    update request type to endpoint for updateOrderToPaid
+
+[33mcommit 57803d52625b38b3bdbd746c41a32eb5b952b122[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Mon Aug 9 12:45:45 2021 +0500
+
+    update order payment --added
+
+[33mcommit 36f66ae659cb27971a8a8a3734de2d59eb81306d[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Mon Aug 9 12:37:40 2021 +0500
+
+    OrderScreen added
+
+[33mcommit 5fdfe958681b0ef53ae6e19304d206c112908a02[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Mon Aug 9 11:15:24 2021 +0500
+
+    Place Order functionality added
+
+[33mcommit 8825c776f3bb807655887bb98d69c77ed686965e[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Sun Aug 8 15:36:08 2021 +0500
+
+    Place order screen added
+
+[33mcommit accffb9a81efe0967e3dd937ee5eebe008f21e70[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Sun Aug 8 14:10:19 2021 +0500
+
+    Payment Screen added
+
+[33mcommit a71272066b6f9f670a6acba1f1aad05c53aedcce[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Sat Aug 7 22:46:06 2021 +0500
+
+    Shipping Screen completed
+
+[33mcommit 670b7ca814f83046f8a27ff8b6179d58ef3bc39e[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Sat Aug 7 16:35:16 2021 +0500
+
+    update profile functionality added
+
+[33mcommit 04f9a65ca7b8b9b31a0408cf19296762a59ef2fd[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Sat Aug 7 14:51:22 2021 +0500
+
+    added profile section in ProfileScreen
+
+[33mcommit eaa93122759bbd443402ab62a1282f62b0b8570c[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Sat Aug 7 13:37:09 2021 +0500
+
+    created update endpoint
+
+[33mcommit baeadc77d196ada4838c9382babad8dd38a3d6b5[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Sat Aug 7 12:19:35 2021 +0500
+
+    Register Screen created
+
+[33mcommit 70925ea7a681eb78a8b3fd9d6f9541e1583966c1[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Sat Aug 7 11:34:59 2021 +0500
+
+    Login screen created
+
+[33mcommit db7b888a348916e99e283161ac10f585a9993d32[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Fri Aug 6 09:53:08 2021 +0500
+
+    register user completed
+
+[33mcommit 6f075ffd1b65bf8f88fc77a3a1d3bc5b12ed7896[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Sat Jul 31 12:54:37 2021 +0500
+
+    user authentication
+
+[33mcommit 847485b3e137f4d06dfab0002dc4f596552dea67[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Thu Jul 29 16:24:55 2021 +0500
+
+    clean -- productController added
+
+[33mcommit a3cbb9b04ce0483577b057d833ad118aa16dd957[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Thu Jul 29 16:20:07 2021 +0500
+
+    remove from cart functionality added
+
+[33mcommit a266b97110c757e184402ec15653840a45ca927f[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Thu Jul 29 14:36:34 2021 +0500
+
+    addToCart implemented
+
+[33mcommit 485e032925142cdd0948ca0f4aad18e8a392da0d[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Wed Jul 28 13:02:00 2021 +0500
+
+    Implemented ProductScreen Redux
+
+[33mcommit 30095789b59f947374fa7cb04b0bf1803da8361d[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Wed Jul 28 12:07:19 2021 +0500
+
+    Implemented Redux for Homescreen
+
+[33mcommit 144066186264eeeacc176bf4e7a4f38047c5b173[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Tue Jul 27 10:45:10 2021 +0500
+
+    added productRoutes and errorHandler
+
+[33mcommit e42cf400a66858ca2afae8a984459363141e340b[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Mon Jul 26 22:23:24 2021 +0500
+
+    added seeder
+
+[33mcommit b652ec3da8018f30a9684da8a582130556148369[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Mon Jul 26 16:19:16 2021 +0500
+
+    created dummy users
+
+[33mcommit 176f5f573d7f8a23e78b35fd86d5f75dcb739e0d[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Mon Jul 26 16:00:56 2021 +0500
+
+    created database models
+
+[33mcommit efd0183c084ad18b14e39185a83a331b086a5d65[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Mon Jul 26 13:41:59 2021 +0500
+
+    Added README to root
+
+[33mcommit 8ff825dbee071e1e44d5861cbdad6dee9e952d61[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Mon Jul 26 13:21:03 2021 +0500
+
+    MongoDB connection setup
+
+[33mcommit 223c1789cdd71b7385be81d69d41f7f2c235d46f[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Mon Jul 26 12:10:33 2021 +0500
+
+    CommonJS to ES6 in backend
+
+[33mcommit 9ec4506839d2fd190491f66d8677df5ac70507b5[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Mon Jul 26 12:04:04 2021 +0500
+
+    dotenv setup
+
+[33mcommit 936b7ad80b1b0e64dd894cc6f6aeb79b9625241c[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Mon Jul 26 11:47:15 2021 +0500
+
+    api and concurrently setup with frontend
+
+[33mcommit 26590d195cc81e85d36b6baf1f8b6518b7012851[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Sun Jul 25 21:53:31 2021 +0500
+
+    implemented react-router
+
+[33mcommit ecde0faecb20e51d43b81a5b2c9348c129d452e1[m
+Author: hamidayb <hayub.bese18seecs@seecs.edu.pk>
+Date:   Sun Jul 25 10:54:19 2021 +0500
+
+    React setup

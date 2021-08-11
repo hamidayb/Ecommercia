@@ -28,8 +28,6 @@ const LoginScreen = ({ history }) => {
   const myOrders = useSelector((state) => state.myOrders)
   const { loading: loadingOrders, orders, error: errorOrders } = myOrders
 
-  console.log(orders)
-
   useEffect(() => {
     if (!userInfo) {
       history.push("/login")
