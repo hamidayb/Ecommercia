@@ -27,3 +27,15 @@ export const addToCart = asyncHandler(async (req, res) => {
     }
   }
 })
+
+export const getFromCart = asyncHandler(async (req, res) => {
+  const cart = (await Cart.find({ user: req.user._id }))[0]
+  if (cart && cart.length !== 0) {
+    const cartItems = cart.cartItems
+    res.status(200)
+    res.json(cartItems)
+  } else {
+    res.send(404)
+    throw new Error(`Cart not found`)
+  }
+})
