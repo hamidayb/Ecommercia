@@ -52,7 +52,7 @@ const UsersList = ({ history }) => {
 
           <tbody>
             {users.map((user) => (
-              <tr>
+              <tr key={user._id}>
                 <td>{user._id}</td>
                 <td>{user.name}</td>
                 <td>
@@ -60,13 +60,13 @@ const UsersList = ({ history }) => {
                 </td>
                 <td>
                   {user.isAdmin ? (
-                    <i class="fas fa-check" style={{ color: "green" }}></i>
+                    <i className="fas fa-check" style={{ color: "green" }}></i>
                   ) : (
-                    <i class="fas fa-times" style={{ color: "red" }}></i>
+                    <i className="fas fa-times" style={{ color: "red" }}></i>
                   )}
                 </td>
                 <td>
-                  <LinkContainer to={`/user/${user._id}/edit`}>
+                  <LinkContainer to={`/admin/user/${user._id}/edit`}>
                     <Button variant="light" className="btn-sm">
                       <i className="fas fa-edit"></i>
                     </Button>
