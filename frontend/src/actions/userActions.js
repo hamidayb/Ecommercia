@@ -46,7 +46,7 @@ export const login = (email, password) => async (dispatch) => {
     dispatch({
       type: USER_LOGIN_FAIL,
       payload:
-        error.message && error.response.data.message
+        error.response && error.response.data.message
           ? error.response.data.message
           : error.message,
     })
@@ -77,7 +77,7 @@ export const register = (name, email, password) => async (dispatch) => {
     dispatch({
       type: USER_REGISTER_FAIL,
       payload:
-        error.message && error.response.data.message
+        error.response && error.response.data.message
           ? error.response.data.message
           : error.message,
     })
@@ -108,7 +108,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
     dispatch({
       type: USER_DETAILS_FAIL,
       payload:
-        error.message && error.response.data.message
+        error.response && error.response.data.message
           ? error.response.data.message
           : error.message,
     })
@@ -142,7 +142,7 @@ export const getUpdatedProfile = (user) => async (dispatch, getState) => {
     dispatch({
       type: USER_UPDATE_PROFILE_FAIL,
       payload:
-        error.message && error.response.data.message
+        error.response && error.response.data.message
           ? error.response.data.message
           : error.message,
     })
@@ -172,7 +172,7 @@ export const getUserList = () => async (dispatch, getState) => {
     dispatch({
       type: USER_LIST_FAIL,
       payload:
-        error.message && error.response && error.response.data.message
+        error.response && error.response.data.message
           ? error.response.data.message
           : error.message,
     })
