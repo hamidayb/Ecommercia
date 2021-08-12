@@ -2,16 +2,21 @@ import {
   CART_ADD_ITEM_FAIL,
   CART_ADD_ITEM_REQUEST,
   CART_ADD_ITEM_SUCCESS,
-  CART_REMOVE_ITEM,
-  CART_UPDATE_FAIL,
-  CART_UPDATE_REQUEST,
-  CART_UPDATE_SUCCESS,
   CART_GET_ITEMS_FAIL,
   CART_GET_ITEMS_REQUEST,
   CART_GET_ITEMS_SUCCESS,
+  CART_CHANGE_QTY_FAIL,
+  CART_CHANGE_QTY_REQUEST,
+  CART_CHANGE_QTY_SUCCESS,
   CART_RESET,
   CART_SAVE_PAYMENT_METHOD,
   CART_SAVE_SHIPPING_DETAILS,
+  CART_REMOVE_ITEM_REQUEST,
+  CART_REMOVE_ITEM_SUCCESS,
+  CART_REMOVE_ITEM_FAIL,
+  CART_UPDATE_REQUEST,
+  CART_UPDATE_SUCCESS,
+  CART_UPDATE_FAIL,
 } from "../constants/cartConstants"
 
 export const cartReducer = (
@@ -37,27 +42,33 @@ export const cartReducer = (
         error: action.payload,
       }
 
-    case CART_REMOVE_ITEM:
+    case CART_REMOVE_ITEM_REQUEST:
       return {
         ...state,
-        cartItems: state.cartItems.filter((x) => x.product !== action.payload),
+      }
+    case CART_REMOVE_ITEM_SUCCESS:
+      return {
+        ...state,
+        cartItems: action.payload,
+      }
+    case CART_REMOVE_ITEM_FAIL:
+      return {
+        ...state,
+        error: action.payload,
+      }
+    case CART_CHANGE_QTY_REQUEST:
+      return {
+        ...state,
+      }
+    case CART_CHANGE_QTY_SUCCESS:
+      return {
+        ...state,
+        cartItems: action.payload,
       }
 
-    case CART_UPDATE_REQUEST:
+    case CART_CHANGE_QTY_FAIL:
       return {
         ...state,
-        loading: true,
-      }
-    case CART_UPDATE_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        success: true,
-      }
-    case CART_UPDATE_FAIL:
-      return {
-        ...state,
-        loading: false,
         error: action.payload,
       }
 
@@ -73,6 +84,24 @@ export const cartReducer = (
         cartItems: action.payload,
       }
     case CART_GET_ITEMS_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      }
+
+    case CART_UPDATE_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      }
+    case CART_UPDATE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        cartItems: action.payload,
+      }
+    case CART_UPDATE_FAIL:
       return {
         ...state,
         loading: false,

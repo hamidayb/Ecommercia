@@ -35,7 +35,7 @@ export const getFromCart = asyncHandler(async (req, res) => {
     res.status(200)
     res.json(cartItems)
   } else {
-    res.send(404)
-    throw new Error(`Cart not found`)
+    res.status(404)
+    throw new Error(`Empty Cart`)
   }
 })

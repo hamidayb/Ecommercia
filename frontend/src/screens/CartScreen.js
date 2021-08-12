@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from "react-redux"
 import {
   addToCart,
   removeFromCart,
-  updateCart,
   getItemsIntoCart,
+  changeQty,
+  updateCart,
 } from "../actions/cartActions"
 import { Link } from "react-router-dom"
 import { Row, Col, ListGroup, Image, Form, Button, Card } from "react-bootstrap"
@@ -19,18 +20,28 @@ const CartScreen = ({ match, location, history }) => {
 
   const cart = useSelector((state) => state.cart)
   const { loading, cartItems, error } = cart
-  // const { loading: loadingUpdate, success, error: errorUpdate } = cart
+
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin
 
   useEffect(() => {
-    if (productID) {
+    if (productID && userInfo) {
       dispatch(addToCart(productID, qty))
+    } else if (productID && !userInfo) {
+      history.push("/cart")
     } else {
-      dispatch(getItemsIntoCart())
+      if (userInfo) {
+        dispatch(getItemsIntoCart())
+      }
     }
-  }, [dispatch, productID, qty])
+  }, [dispatch, history, userInfo, productID, qty])
 
   const removeFromCartHandler = (id) => {
     dispatch(removeFromCart(id))
+  }
+
+  const updateQty = (id, qty) => {
+    dispatch(changeQty(id, qty))
   }
 
   const checkoutHandler = () => {
@@ -74,9 +85,7 @@ const CartScreen = ({ match, location, history }) => {
                           as="select"
                           value={item.qty}
                           onChange={(e) =>
-                            dispatch(
-                              addToCart(item.product, Number(e.target.value))
-                            )
+                            updateQty(item.product, e.target.value)
                           }
                         >
                           {[...Array(item.countInStock).keys()].map((x) => (
@@ -117,7 +126,7 @@ const CartScreen = ({ match, location, history }) => {
                 <ListGroup.Item>
                   <Button
                     type="button"
-                    calssName="btn-block"
+                    className="btn-block"
                     disabled={cartItems.length === 0}
                     onClick={checkoutHandler}
                   >
