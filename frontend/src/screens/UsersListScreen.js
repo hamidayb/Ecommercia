@@ -6,14 +6,21 @@ import { getUserList } from "../actions/userActions"
 import Loader from "../components/Spinner"
 import Message from "../components/Message"
 
-const UsersList = () => {
+const UsersList = ({ history }) => {
   const dispatch = useDispatch()
   const usersList = useSelector((state) => state.usersList)
   const { loading, users, error } = usersList
 
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin
+
   useEffect(() => {
-    dispatch(getUserList())
-  }, [dispatch])
+    if (userInfo && userInfo.isAdmin) {
+      dispatch(getUserList())
+    } else {
+      history.push("/login")
+    }
+  }, [dispatch, history, userInfo])
 
   const deleteHandler = (id) => {}
 
