@@ -13,6 +13,7 @@ import {
   userUpdateProfileReducer,
   usersListReducer,
   userDeleteReducer,
+  userUpdateReducer,
 } from "./reducers/userReducers"
 import {
   orderItemsReducer,
@@ -35,6 +36,7 @@ const reducer = combineReducers({
   myOrders: getMyOrdersReducer,
   usersList: usersListReducer,
   userDelete: userDeleteReducer,
+  userUpdate: userUpdateReducer,
 })
 
 const shippingAddressFromStorage = localStorage.getItem("shippingAddress")

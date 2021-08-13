@@ -2,15 +2,16 @@ import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { Form, Button } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
-import { getUserDetails } from "../actions/userActions"
+import { getUserDetails, updateUser } from "../actions/userActions"
 import FormContainer from "../components/FormContainer"
 import Message from "../components/Message"
 import Loader from "../components/Spinner"
+import { USER_UPDATE_RESET } from "../constants/userConstants"
 
-const EditUser = ({ match }) => {
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [isAdmin, setIsAdmin] = useState("")
+const EditUser = ({ match, history }) => {
+  const [name, setName] = useState()
+  const [email, setEmail] = useState()
+  const [isAdmin, setIsAdmin] = useState()
 
   const userId = match.params.id
 
@@ -19,17 +20,28 @@ const EditUser = ({ match }) => {
   const userDetails = useSelector((state) => state.userDetails)
   const { loading, error, user } = userDetails
 
-  useEffect(() => {
-    if (user && user._id === userId) {
-      setName(user.name)
-      setEmail(user.email)
-      setIsAdmin(user.isAdmin)
-    } else {
-      dispatch(getUserDetails(userId))
-    }
-  }, [user, dispatch, userId])
+  const userUpdate = useSelector((state) => state.userUpdate)
+  const { loading: loadingUpdate, error: errorUpdate, success } = userUpdate
 
-  const submitHandler = (e) => {}
+  useEffect(() => {
+    if (success) {
+      dispatch({ type: USER_UPDATE_RESET })
+      history.push("/admin/users")
+    } else {
+      if (user && user._id === userId) {
+        setName(user.name)
+        setEmail(user.email)
+        setIsAdmin(user.isAdmin)
+      } else {
+        dispatch(getUserDetails(userId))
+      }
+    }
+  }, [history, user, dispatch, userId, success])
+
+  const submitHandler = (e) => {
+    e.preventDefault()
+    dispatch(updateUser({ _id: userId, name, email, isAdmin }))
+  }
   return (
     <>
       <Link to="/admin/users" className="btn btn-light my-3">
@@ -37,6 +49,8 @@ const EditUser = ({ match }) => {
       </Link>
       <FormContainer>
         <h1>Edit User</h1>
+        {loadingUpdate && <Loader />}
+        {errorUpdate && <Message variant="danger">{error}</Message>}
         {loading ? (
           <Loader />
         ) : error ? (
@@ -66,9 +80,12 @@ const EditUser = ({ match }) => {
             <Form.Group controlId="isAdmin">
               <Form.Check
                 type="checkbox"
-                label="Is Admin"
-                value={isAdmin}
-                onChange={(e) => setIsAdmin(e.target.checked)}
+                label="Admin"
+                checked={isAdmin}
+                value={!isAdmin}
+                onChange={(e) => {
+                  setIsAdmin(e.target.checked)
+                }}
               ></Form.Check>
             </Form.Group>
 
