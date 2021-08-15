@@ -13,6 +13,7 @@ import OrderScreen from "./screens/OrderScreen"
 import UsersListScreen from "./screens/UsersListScreen"
 import UserEditScreen from "./screens/UserEditScreen"
 import ProductListScreen from "./screens/ProductListScreen"
+import ProductEditScreen from "./screens/ProductEditScreen"
 import { Container } from "react-bootstrap"
 import { BrowserRouter as Router, Route } from "react-router-dom"
 import "./bootstrap.min.css"
@@ -36,6 +37,7 @@ const App = () => {
           <Route path="/admin/users" component={UsersListScreen} />
           <Route path="/admin/user/:id/edit" component={UserEditScreen} />
           <Route path="/admin/products" component={ProductListScreen} />
+          <Route path="/admin/product/:id/edit" component={ProductEditScreen} />
         </Container>
       </main>
       <Footer />
