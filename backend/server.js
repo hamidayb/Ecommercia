@@ -1,10 +1,12 @@
 import express from "express"
+import path from "path"
 import dotenv from "dotenv"
 import Connect_DB from "./config/db.js"
 import productRoutes from "./routes/productRoutes.js"
 import userRoutes from "./routes/userRoutes.js"
 import orderRoutes from "./routes/orderRoutes.js"
 import cartRoutes from "./routes/cartRoutes.js"
+import uploadRoutes from "./routes/uploadRoutes.js"
 import { notFound, error } from "./middleware/errorMiddleware.js"
 import colors from "colors"
 
@@ -25,12 +27,15 @@ app.use("/api/products", productRoutes)
 app.use("/api/users", userRoutes)
 app.use("/api/cart", cartRoutes)
 app.use("/api/orders", orderRoutes)
+app.use("/api/upload", uploadRoutes)
 app.get("/api/config/paypal", (req, res) => {
   res.send(process.env.PAYPAL_CLIENT_ID)
 })
 
 // Middleware
 
+const __dirname = path.resolve()
+app.use("/uploads", express.static(path.join(__dirname, "/uploads")))
 // handle error if wrong url``
 app.use(notFound)
 // change error status of 200 in case to 500
