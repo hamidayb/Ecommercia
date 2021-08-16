@@ -16,7 +16,7 @@ import {
   ORDER_PAY_RESET,
 } from "../constants/orderConstants"
 
-export const PlaceOrderScreen = ({ match }) => {
+export const OrderScreen = ({ match }) => {
   const [sdkReady, setSdkReady] = useState(false)
   const orderId = match.params.id
 
@@ -171,7 +171,7 @@ export const PlaceOrderScreen = ({ match }) => {
                   <ListGroup.Item>
                     <Row>
                       <Col>Items: </Col>
-                      <Col>${order.itemsPrice}</Col>
+                      <Col>${roundOff(order.itemsPrice)}</Col>
                     </Row>
                   </ListGroup.Item>
                   <ListGroup.Item>
@@ -225,4 +225,4 @@ export const PlaceOrderScreen = ({ match }) => {
   )
 }
 
-export default PlaceOrderScreen
+export default OrderScreen

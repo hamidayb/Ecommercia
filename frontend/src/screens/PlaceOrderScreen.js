@@ -5,7 +5,9 @@ import { useDispatch, useSelector } from "react-redux"
 import CheckoutSteps from "../components/CheckoutSteps"
 import Message from "../components/Message"
 import { placeOrder } from "../actions/orderActions"
+import { emptyCart } from "../actions/cartActions"
 import Loader from "../components/Spinner"
+import { ORDER_PLACE_RESET } from "../constants/orderConstants"
 
 export const PlaceOrderScreen = ({ history }) => {
   const dispatch = useDispatch()
@@ -31,6 +33,8 @@ export const PlaceOrderScreen = ({ history }) => {
 
   useEffect(() => {
     if (success) {
+      dispatch({ type: ORDER_PLACE_RESET })
+      dispatch(emptyCart())
       history.push(`/order/${orderInfo._id}`)
     }
     // eslint-disable-next-line
@@ -48,6 +52,7 @@ export const PlaceOrderScreen = ({ history }) => {
         totalPrice: cart.totalPrice,
       })
     )
+    dispatch(emptyCart())
   }
 
   return (

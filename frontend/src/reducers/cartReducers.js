@@ -8,7 +8,6 @@ import {
   CART_CHANGE_QTY_FAIL,
   CART_CHANGE_QTY_REQUEST,
   CART_CHANGE_QTY_SUCCESS,
-  CART_RESET,
   CART_SAVE_PAYMENT_METHOD,
   CART_SAVE_SHIPPING_DETAILS,
   CART_REMOVE_ITEM_REQUEST,
@@ -17,6 +16,9 @@ import {
   CART_UPDATE_REQUEST,
   CART_UPDATE_SUCCESS,
   CART_UPDATE_FAIL,
+  CART_EMPTY_REQUEST,
+  CART_EMPTY_SUCCESS,
+  CART_EMPTY_FAIL,
 } from "../constants/cartConstants"
 
 export const cartReducer = (
@@ -120,8 +122,14 @@ export const cartReducer = (
         paymentMethod: action.payload,
       }
 
-    case CART_RESET:
-      return { cartItems: [], shippingAddress: {} }
+    case CART_EMPTY_REQUEST:
+      return { ...state, loading: true }
+
+    case CART_EMPTY_SUCCESS:
+      return { ...state, loading: false, cartItems: action.payload }
+
+    case CART_EMPTY_FAIL:
+      return { ...state, loading: false, error: action.payload }
 
     default:
       return state

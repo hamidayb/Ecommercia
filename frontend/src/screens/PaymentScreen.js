@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { savePaymentMethod } from "../actions/cartActions"
 import CheckoutSteps from "../components/CheckoutSteps"
 
-export const ShippingScreen = ({ history }) => {
+export const PaymentScreen = ({ history }) => {
   const cart = useSelector((state) => state.cart)
   const { shippingAddress } = cart
 
@@ -57,4 +57,4 @@ export const ShippingScreen = ({ history }) => {
   )
 }
 
-export default ShippingScreen
+export default PaymentScreen

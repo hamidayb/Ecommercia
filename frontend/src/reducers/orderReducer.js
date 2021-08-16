@@ -22,6 +22,7 @@ import {
   ORDER_PAY_SUCCESS,
   ORDER_PLACE_FAIL,
   ORDER_PLACE_REQUEST,
+  ORDER_PLACE_RESET,
   ORDER_PLACE_SUCCESS,
 } from "../constants/orderConstants"
 
@@ -35,6 +36,8 @@ export const orderItemsReducer = (state = {}, action) => {
       return { loading: false, success: true, orderInfo: action.payload }
     case ORDER_PLACE_FAIL:
       return { loading: false, error: action.payload }
+    case ORDER_PLACE_RESET:
+      return {}
     default:
       return state
   }

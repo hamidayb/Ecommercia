@@ -16,6 +16,9 @@ import {
   CART_UPDATE_REQUEST,
   CART_UPDATE_SUCCESS,
   CART_UPDATE_FAIL,
+  CART_EMPTY_REQUEST,
+  CART_EMPTY_SUCCESS,
+  CART_EMPTY_FAIL,
 } from "../constants/cartConstants"
 import axios from "axios"
 
@@ -178,6 +181,35 @@ export const updateCart = () => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: CART_UPDATE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
+
+export const emptyCart = () => async (dispatch, getState) => {
+  try {
+    dispatch({ type: CART_EMPTY_REQUEST })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+    const {
+      data: { cartItems },
+    } = await axios.post("/api/cart", { cartItems: [] }, config)
+
+    dispatch({ type: CART_EMPTY_SUCCESS, payload: cartItems })
+  } catch (error) {
+    dispatch({
+      type: CART_EMPTY_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

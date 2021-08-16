@@ -25,7 +25,6 @@ import {
   USER_UPDATE_SUCCESS,
 } from "../constants/userConstants"
 import { GET_MY_ORDERS_RESET } from "../constants/orderConstants"
-import { CART_RESET } from "../constants/cartConstants"
 
 import axios from "axios"
 
@@ -250,7 +249,6 @@ export const logout = () => (dispatch) => {
   localStorage.removeItem("userInfo")
   dispatch({ type: USER_DETAILS_RESET })
   dispatch({ type: GET_MY_ORDERS_RESET })
-  dispatch({ type: CART_RESET })
   dispatch({ type: USER_LIST_RESET })
   dispatch({ type: USER_LOGOUT })
 }
