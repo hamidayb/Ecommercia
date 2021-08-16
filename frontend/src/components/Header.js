@@ -1,6 +1,8 @@
 import { LinkContainer } from "react-router-bootstrap"
+import { Route } from "react-router"
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
+import SearchBar from "./SearchBar"
 import { logout } from "../actions/userActions"
 import { emptyCart } from "../actions/cartActions"
 
@@ -22,6 +24,7 @@ const Header = () => {
           <LinkContainer to="/">
             <Navbar.Brand>Ecommercia</Navbar.Brand>
           </LinkContainer>
+          <Route render={({ history }) => <SearchBar history={history} />} />
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">

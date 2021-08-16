@@ -5,7 +5,16 @@ import asyncHandler from "express-async-handler"
 // @route       /api/products
 // @access      public
 export const getProducts = asyncHandler(async (req, res) => {
-  const products = await Product.find({})
+  const keyword = req.query.keyword
+    ? {
+        name: {
+          $regex: req.query.keyword,
+          $options: "i", // for case insensitive
+        },
+      }
+    : {}
+  const products = await Product.find({ ...keyword })
+  console.log(products)
   res.json(products)
 })
 
