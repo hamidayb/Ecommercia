@@ -22,7 +22,7 @@ const userSchema = mongoose.Schema(
       default: false,
     },
   },
-  { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
+  { timestamps: true }
 )
 
 userSchema.methods.matchPassword = async function (enteredPassword) {

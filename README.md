@@ -66,6 +66,12 @@
 
 ##### Redux-devtools-extension manages redux-devtools browser extension for testing and debugging
 
+### **multer**
+
+##### Multer is npm package mainly used for uploading files.
+
+> npm i multer
+
 > npm i redux react-redux redux-devtools-extension
 
 ### **react-paypal-button-v2**

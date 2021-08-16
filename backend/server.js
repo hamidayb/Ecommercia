@@ -1,6 +1,7 @@
 import express from "express"
 import path from "path"
 import dotenv from "dotenv"
+import morgan from "morgan"
 import Connect_DB from "./config/db.js"
 import productRoutes from "./routes/productRoutes.js"
 import userRoutes from "./routes/userRoutes.js"
@@ -16,6 +17,11 @@ dotenv.config()
 Connect_DB()
 
 const app = express()
+
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"))
+}
+
 app.use(express.json())
 
 // API Requests
