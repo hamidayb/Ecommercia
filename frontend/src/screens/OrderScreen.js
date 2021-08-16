@@ -4,6 +4,7 @@ import { ListGroup, Row, Col, Image, Card, Button } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
 import { PayPalButton } from "react-paypal-button-v2"
 import Message from "../components/Message"
+import Meta from "../components/Meta"
 import {
   orderPayAction,
   getOrderDetails,
@@ -92,16 +93,17 @@ export const OrderScreen = ({ match, history }) => {
 
   return (
     <>
+      <Meta title={"Ecommercia | Orders"} />
       {loading ? (
         <Loader />
       ) : error ? (
-        <Message variant="danger">{error}</Message>
+        <Message variant='danger'>{error}</Message>
       ) : order ? (
         <>
           <h2>Order # {order._id}</h2>
           <Row>
             <Col md={8}>
-              <ListGroup variant="flush">
+              <ListGroup variant='flush'>
                 <ListGroup.Item>
                   <h3>Shipping Address</h3>
                   <p>
@@ -121,9 +123,9 @@ export const OrderScreen = ({ match, history }) => {
                     {order.shippingAddress.country}
                   </p>
                   {order.isDelivered ? (
-                    <Message variant="success">Delivered</Message>
+                    <Message variant='success'>Delivered</Message>
                   ) : (
-                    <Message variant="danger">Not Delivered</Message>
+                    <Message variant='danger'>Not Delivered</Message>
                   )}
                 </ListGroup.Item>
 
@@ -133,9 +135,9 @@ export const OrderScreen = ({ match, history }) => {
                     <strong>Method:</strong> {order.paymentMethod}
                   </p>
                   {order.isPaid ? (
-                    <Message variant="success">Paid</Message>
+                    <Message variant='success'>Paid</Message>
                   ) : (
-                    <Message variant="danger">Not Paid</Message>
+                    <Message variant='danger'>Not Paid</Message>
                   )}
                 </ListGroup.Item>
 
@@ -144,7 +146,7 @@ export const OrderScreen = ({ match, history }) => {
                   {order.orderItems.length === 0 ? (
                     <Message>You cart is empty</Message>
                   ) : (
-                    <ListGroup variant="flush">
+                    <ListGroup variant='flush'>
                       {order.orderItems.map((item, index) => (
                         <ListGroup.Item key={index}>
                           <Row>
@@ -229,7 +231,7 @@ export const OrderScreen = ({ match, history }) => {
           </Row>
         </>
       ) : (
-        <Message variant="danger">Unexpected error</Message>
+        <Message variant='danger'>Unexpected error</Message>
       )}
     </>
   )

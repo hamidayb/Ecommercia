@@ -6,6 +6,7 @@ import { getUserDetails, updateUser } from "../actions/userActions"
 import FormContainer from "../components/FormContainer"
 import Message from "../components/Message"
 import Loader from "../components/Spinner"
+import Meta from "../components/Meta"
 import { USER_UPDATE_RESET } from "../constants/userConstants"
 
 const EditUser = ({ match, history }) => {
@@ -44,43 +45,44 @@ const EditUser = ({ match, history }) => {
   }
   return (
     <>
-      <Link to="/admin/users" className="btn btn-light my-3">
+      <Meta title={`Admin | ${userId}`} />
+      <Link to='/admin/users' className='btn btn-light my-3'>
         Go Back
       </Link>
       <FormContainer>
         <h1>Edit User</h1>
         {loadingUpdate && <Loader />}
-        {errorUpdate && <Message variant="danger">{error}</Message>}
+        {errorUpdate && <Message variant='danger'>{error}</Message>}
         {loading ? (
           <Loader />
         ) : error ? (
-          <Message variant="danger">{error}</Message>
+          <Message variant='danger'>{error}</Message>
         ) : (
           <Form onSubmit={submitHandler}>
-            <Form.Group controlId="name">
+            <Form.Group controlId='name'>
               <Form.Label>Name</Form.Label>
               <Form.Control
-                type="text"
-                placeholder="Enter full name"
+                type='text'
+                placeholder='Enter full name'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId="email">
+            <Form.Group controlId='email'>
               <Form.Label>Email Address</Form.Label>
               <Form.Control
-                type="email"
-                placeholder="Enter email"
+                type='email'
+                placeholder='Enter email'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId="isAdmin">
+            <Form.Group controlId='isAdmin'>
               <Form.Check
-                type="checkbox"
-                label="Admin"
+                type='checkbox'
+                label='Admin'
                 checked={isAdmin}
                 value={!isAdmin}
                 onChange={(e) => {
@@ -90,9 +92,9 @@ const EditUser = ({ match, history }) => {
             </Form.Group>
 
             <Button
-              type="submit"
-              variant="primary"
-              className="my-3"
+              type='submit'
+              variant='primary'
+              className='my-3'
               onClick={submitHandler}
             >
               Register

@@ -5,7 +5,7 @@ import asyncHandler from "express-async-handler"
 // @route       /api/products
 // @access      public
 export const getProducts = asyncHandler(async (req, res) => {
-  const pageSize = 2
+  const pageSize = 10
   const pageNumber = Number(req.query.pageNumber) || 1
   const keyword = req.query.keyword
     ? {

@@ -7,6 +7,7 @@ import Message from "../components/Message"
 import { placeOrder } from "../actions/orderActions"
 import { emptyCart } from "../actions/cartActions"
 import Loader from "../components/Spinner"
+import Meta from "../components/Meta"
 import { ORDER_PLACE_RESET } from "../constants/orderConstants"
 
 export const PlaceOrderScreen = ({ history }) => {
@@ -57,10 +58,11 @@ export const PlaceOrderScreen = ({ history }) => {
 
   return (
     <>
+      <Meta title={"Ecommercia | Place Order"} />
       <CheckoutSteps step1 step2 step3 step4 />
       <Row>
         <Col md={8}>
-          <ListGroup variant="flush">
+          <ListGroup variant='flush'>
             <ListGroup.Item>
               <h3>Shipping Address</h3>
               <p>
@@ -82,7 +84,7 @@ export const PlaceOrderScreen = ({ history }) => {
               {cart.cartItems.length === 0 ? (
                 <Message>You cart is empty</Message>
               ) : (
-                <ListGroup variant="flush">
+                <ListGroup variant='flush'>
                   {cart.cartItems.map((item) => (
                     <ListGroup.Item key={item._id}>
                       <Row>
@@ -142,11 +144,11 @@ export const PlaceOrderScreen = ({ history }) => {
               </ListGroup.Item>
               <ListGroup.Item>
                 {loading && <Loader />}
-                {error && <Message variant="danger">{error}</Message>}
+                {error && <Message variant='danger'>{error}</Message>}
               </ListGroup.Item>
               <ListGroup.Item>
                 <Button
-                  type="button"
+                  type='button'
                   style={{ width: "100%" }}
                   onClick={placeOrderHandler}
                 >

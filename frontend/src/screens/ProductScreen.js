@@ -9,6 +9,7 @@ import {
 } from "../actions/productActions"
 import Message from "../components/Message"
 import Loader from "../components/Spinner"
+import Meta from "../components/Meta"
 import { PRODUCT_CREATE_REVIEW_RESET } from "../constants/productConstants"
 
 const ProductScreen = ({ history, match }) => {
@@ -49,13 +50,14 @@ const ProductScreen = ({ history, match }) => {
 
   return (
     <>
-      <Link to="/" className="btn btn-light my-3">
+      <Meta title={`Ecommercia | ${productId}`} />
+      <Link to='/' className='btn btn-light my-3'>
         Go Back
       </Link>
       {loading ? (
         <Loader />
       ) : error ? (
-        <Message variant="danger">{error}</Message>
+        <Message variant='danger'>{error}</Message>
       ) : (
         <>
           <Row>
@@ -63,7 +65,7 @@ const ProductScreen = ({ history, match }) => {
               <Image src={product.image} alt={product.name} fluid />
             </Col>
             <Col md={3}>
-              <ListGroup variant="flush">
+              <ListGroup variant='flush'>
                 <ListGroup.Item>
                   <h3>{product.name}</h3>
                 </ListGroup.Item>
@@ -81,7 +83,7 @@ const ProductScreen = ({ history, match }) => {
             </Col>
             <Col md={3}>
               <Card>
-                <ListGroup variant="flush">
+                <ListGroup variant='flush'>
                   <ListGroup.Item>
                     <Row>
                       <Col>Price: </Col>
@@ -110,7 +112,7 @@ const ProductScreen = ({ history, match }) => {
                         <Col>Quantity:</Col>
                         <Col>
                           <Form.Control
-                            as="select"
+                            as='select'
                             value={qty}
                             onChange={(e) => setQty(e.target.value)}
                             style={{ padding: "2px 10px" }}
@@ -130,8 +132,8 @@ const ProductScreen = ({ history, match }) => {
 
                   <ListGroup.Item>
                     <Button
-                      className="btn-block w-100"
-                      type="button"
+                      className='btn-block w-100'
+                      type='button'
                       disabled={product.countInStock === 0}
                       onClick={addToCartHandler}
                     >
@@ -142,14 +144,14 @@ const ProductScreen = ({ history, match }) => {
               </Card>
             </Col>
           </Row>
-          <Row className="mt-4">
+          <Row className='mt-4'>
             <Col md={6}>
               <h3>Reviews</h3>
-              {errorReview && <Message variant="danger">{errorReview}</Message>}
+              {errorReview && <Message variant='danger'>{errorReview}</Message>}
               {product && product.reviews.length === 0 && (
-                <Message variant="info">No Reviews</Message>
+                <Message variant='info'>No Reviews</Message>
               )}
-              <ListGroup variant="flush">
+              <ListGroup variant='flush'>
                 {product.reviews.map((review) => (
                   <ListGroup.Item key={review._id}>
                     <strong>{review.name}</strong>
@@ -165,30 +167,30 @@ const ProductScreen = ({ history, match }) => {
                       <Form.Group>
                         <Form.Label>Rating</Form.Label>
                         <Form.Control
-                          as="select"
+                          as='select'
                           value={rating}
                           onChange={(e) => setRating(e.target.value)}
                         >
-                          <option value="">Select rating</option>
-                          <option value="1">1 - Very Poor</option>
-                          <option value="2">2 - Poor</option>
-                          <option value="3">3 - Fair</option>
-                          <option value="4">4 - Good</option>
-                          <option value="5">5 - Very Good</option>
+                          <option value=''>Select rating</option>
+                          <option value='1'>1 - Very Poor</option>
+                          <option value='2'>2 - Poor</option>
+                          <option value='3'>3 - Fair</option>
+                          <option value='4'>4 - Good</option>
+                          <option value='5'>5 - Very Good</option>
                         </Form.Control>
                       </Form.Group>
-                      <Form.Group controlId="comment">
+                      <Form.Group controlId='comment'>
                         <Form.Label>Comment</Form.Label>
                         <Form.Control
-                          as="textarea"
-                          row="3"
+                          as='textarea'
+                          row='3'
                           value={comment}
                           onChange={(e) => setComment(e.target.value)}
                         ></Form.Control>
                         <Button
-                          type="submit"
-                          variant="primary"
-                          className="mt-4"
+                          type='submit'
+                          variant='primary'
+                          className='mt-4'
                           onClick={submitHandler}
                         >
                           Submit
@@ -197,7 +199,7 @@ const ProductScreen = ({ history, match }) => {
                     </Form>
                   ) : (
                     <Message>
-                      You should <Link to="/login">sign in</Link> to post a
+                      You should <Link to='/login'>sign in</Link> to post a
                       review.
                     </Message>
                   )}

@@ -79,3 +79,9 @@
 ##### It is used to create prebuild paypal button
 
 > npm i react-paypal-button-v2
+
+### **react-helmet**
+
+##### React Helmet is a library that helps to manage the document head in React applications. We can use it to change the page title, language, and meta-information. We can work with page <html> and <head> elements using the document object
+
+> npm i react-helmet

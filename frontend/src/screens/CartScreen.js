@@ -11,6 +11,7 @@ import { Link } from "react-router-dom"
 import { Row, Col, ListGroup, Image, Form, Button, Card } from "react-bootstrap"
 import Message from "../components/Message"
 import Loader from "../components/Spinner"
+import Meta from "../components/Meta"
 
 const CartScreen = ({ match, location, history }) => {
   const productID = match.params.id
@@ -51,20 +52,21 @@ const CartScreen = ({ match, location, history }) => {
 
   return (
     <>
+      <Meta title={"Ecommercia | Cart"} />
       {loading ? (
         <Loader />
       ) : error ? (
-        <Message variant="danger">{error}</Message>
+        <Message variant='danger'>{error}</Message>
       ) : (
         <Row>
           <Col md={8}>
             <h1>Shopping Cart</h1>
             {cartItems.length === 0 ? (
               <Message>
-                Cart is empty <Link to="/">Go Back</Link>
+                Cart is empty <Link to='/'>Go Back</Link>
               </Message>
             ) : (
-              <ListGroup variant="flush">
+              <ListGroup variant='flush'>
                 {cartItems.map((item) => (
                   <ListGroup.Item key={item.product}>
                     <Row>
@@ -74,7 +76,7 @@ const CartScreen = ({ match, location, history }) => {
                       <Col md={3}>
                         <Link
                           to={`/product/${item.product}`}
-                          className="product-heading"
+                          className='product-heading'
                         >
                           {item.name}
                         </Link>
@@ -82,7 +84,7 @@ const CartScreen = ({ match, location, history }) => {
                       <Col md={2}>${item.price}</Col>
                       <Col>
                         <Form.Control
-                          as="select"
+                          as='select'
                           value={item.qty}
                           onChange={(e) =>
                             updateQty(item.product, e.target.value)
@@ -97,11 +99,11 @@ const CartScreen = ({ match, location, history }) => {
                       </Col>
                       <Col md={2}>
                         <Button
-                          type="button"
-                          variant="light"
+                          type='button'
+                          variant='light'
                           onClick={() => removeFromCartHandler(item.product)}
                         >
-                          <i className="fas fa-trash"></i>
+                          <i className='fas fa-trash'></i>
                         </Button>
                       </Col>
                     </Row>
@@ -112,7 +114,7 @@ const CartScreen = ({ match, location, history }) => {
           </Col>
           <Col md={4}>
             <Card>
-              <ListGroup variant="flush">
+              <ListGroup variant='flush'>
                 <ListGroup.Item>
                   <h2>
                     Subtotal (
@@ -125,8 +127,8 @@ const CartScreen = ({ match, location, history }) => {
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <Button
-                    type="button"
-                    className="btn-block"
+                    type='button'
+                    className='btn-block'
                     disabled={cartItems.length === 0}
                     onClick={checkoutHandler}
                   >

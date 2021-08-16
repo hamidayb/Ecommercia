@@ -5,6 +5,7 @@ import { LinkContainer } from "react-router-bootstrap"
 import { getAllOrders } from "../actions/orderActions"
 import Loader from "../components/Spinner"
 import Message from "../components/Message"
+import Meta from "../components/Meta"
 
 const UsersList = ({ history }) => {
   const dispatch = useDispatch()
@@ -27,13 +28,14 @@ const UsersList = ({ history }) => {
 
   return (
     <>
+      <Meta title={"Admin | Orders List "} />
       <h2>Orders</h2>
       {loading ? (
         <Loader />
       ) : error ? (
-        <Message variant="danger">{error}</Message>
+        <Message variant='danger'>{error}</Message>
       ) : (
-        <Table striped bordered hover responsive className="table-sm">
+        <Table striped bordered hover responsive className='table-sm'>
           <thead>
             <tr>
               <th>ID</th>
@@ -57,19 +59,19 @@ const UsersList = ({ history }) => {
                   {order.isPaid ? (
                     order.isPaid
                   ) : (
-                    <i className="fas fa-times" style={{ color: "red" }}></i>
+                    <i className='fas fa-times' style={{ color: "red" }}></i>
                   )}
                 </td>
                 <td>
                   {order.isDelivered ? (
                     order.isDelivered
                   ) : (
-                    <i className="fas fa-times" style={{ color: "red" }}></i>
+                    <i className='fas fa-times' style={{ color: "red" }}></i>
                   )}
                 </td>
                 <td>
                   <LinkContainer to={`/order/${order._id}`}>
-                    <Button variant="light" className="btn-sm">
+                    <Button variant='light' className='btn-sm'>
                       Details
                     </Button>
                   </LinkContainer>

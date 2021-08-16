@@ -4,6 +4,7 @@ import { Table, Button, Row, Col } from "react-bootstrap"
 import { LinkContainer } from "react-router-bootstrap"
 import Loader from "../components/Spinner"
 import Message from "../components/Message"
+import Meta from "../components/Meta"
 import { PRODUCT_CREATE_RESET } from "../constants/productConstants"
 import {
   listProducts,
@@ -67,6 +68,7 @@ const ProductListScreen = ({ history, match }) => {
 
   return (
     <>
+      <Meta title={"Admin | Products"} />
       <Row className='align-items-center'>
         <Col>
           <h2>Products</h2>
