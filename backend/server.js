@@ -24,11 +24,7 @@ if (process.env.NODE_ENV === "development") {
 
 app.use(express.json())
 
-// API Requests
-app.get("/", (req, res) => {
-  res.send("API is running")
-})
-
+// APIs
 app.use("/api/products", productRoutes)
 app.use("/api/users", userRoutes)
 app.use("/api/cart", cartRoutes)
@@ -38,10 +34,20 @@ app.get("/api/config/paypal", (req, res) => {
   res.send(process.env.PAYPAL_CLIENT_ID)
 })
 
-// Middleware
-
 const __dirname = path.resolve()
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")))
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/frontend/build")))
+  app.get("*", (req, res) =>
+    res.sendFile(path.join(__dirname, "frontend", "build", "index.html"))
+  )
+} else {
+  app.get("/", (req, res) => {
+    res.send("API is running")
+  })
+}
+
 // handle error if wrong url``
 app.use(notFound)
 // change error status of 200 in case to 500
