@@ -16,7 +16,7 @@ import {
   ORDER_PAY_RESET,
 } from "../constants/orderConstants"
 
-export const OrderScreen = ({ match }) => {
+export const OrderScreen = ({ match, history }) => {
   const [sdkReady, setSdkReady] = useState(false)
   const orderId = match.params.id
 
@@ -31,6 +31,9 @@ export const OrderScreen = ({ match }) => {
   const orderDeliver = useSelector((state) => state.orderDeliver)
   const { loading: loadingDeliver, success: successDeliver } = orderDeliver
 
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin
+
   const roundOff = (num) => {
     return (Math.round(num * 100) / 100).toFixed(2)
   }
@@ -43,6 +46,9 @@ export const OrderScreen = ({ match }) => {
   }
 
   useEffect(() => {
+    if (!userInfo) {
+      history.push("/login")
+    }
     const addPayPalScript = async () => {
       const { data: clientID } = await axios.get("/api/config/paypal")
       const script = document.createElement("script")
@@ -53,6 +59,10 @@ export const OrderScreen = ({ match }) => {
         setSdkReady(true)
       }
       document.body.appendChild(script)
+    }
+
+    if (order && orderId !== order._id) {
+      dispatch(getOrderDetails(orderId))
     }
 
     if (!order || successPay) {
@@ -70,7 +80,7 @@ export const OrderScreen = ({ match }) => {
         setSdkReady(true)
       }
     }
-  }, [dispatch, orderId, order, successPay, successDeliver])
+  }, [dispatch, orderId, order, successPay, successDeliver, history, userInfo])
 
   const paymentSuccessHandler = (paymentResult) => {
     dispatch(orderPayAction(orderId, paymentResult))

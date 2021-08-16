@@ -156,7 +156,7 @@ const LoginScreen = ({ history }) => {
                       )}
                     </td>
                     <td>
-                      <LinkContainer to="/">
+                      <LinkContainer to={`/order/${order._id}`}>
                         <Button className="btn-sm" variant="light">
                           Details
                         </Button>
