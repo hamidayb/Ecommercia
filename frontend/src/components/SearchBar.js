@@ -7,6 +7,7 @@ const SearchBar = ({ history }) => {
   const submitHandler = (e) => {
     e.preventDefault()
     if (keyword.trim()) {
+      setKeyword("")
       history.push(`/search/${keyword}`)
     } else {
       history.push("/")
@@ -16,14 +17,14 @@ const SearchBar = ({ history }) => {
   return (
     <Form onSubmit={submitHandler} style={{ display: "flex" }}>
       <Form.Control
-        type="text"
-        name="search"
+        type='text'
+        name='search'
         onChange={(e) => setKeyword(e.target.value)}
-        placeHolder="Search Products..."
-        classname="mr-sm-2 ml-sm-5"
+        placeHolder='Search Products...'
+        classname='mr-sm-2 ml-sm-5'
         style={{ padding: "5px" }}
       ></Form.Control>
-      <Button type="submit" className="p-2">
+      <Button type='submit' className='p-2'>
         Search
       </Button>
     </Form>
